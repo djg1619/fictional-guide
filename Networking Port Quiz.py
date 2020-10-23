@@ -29,13 +29,18 @@ def intro():
     print('Enter the correct port number with the associated protocol, if a protocol uses multiple enter the lowest.')
 
 def quiztime():
-    question = random.choice(list(ports))
-    print('Enter the port number for: ' + question)
-    guess = int(input())
-    if guess == ports[question]:
-        print('Correct.')
-    elif guess != ports[question]:
-        print('Incorrect.')
+    while True:
+        try:
+            question = random.choice(list(ports))
+            print('Enter the port number for: ' + question)
+            guess = int(input())
+            if guess == ports[question]:
+                print('Correct.')
+            if guess != ports[question]:
+                print('Incorrect.')
+                break
+        except ValueError:
+            print('Oops! That was not a valid number.')
 
 def replay():
     return input('Would you like to play again?: yes or no').lower().startswith('y')
